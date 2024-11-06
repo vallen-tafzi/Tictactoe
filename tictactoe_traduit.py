@@ -3,6 +3,9 @@ def display_board(board):
         print(board[i] + " | " + board[i + 1] + " | " + board[i + 2])
         if i < 6:
             print("--+---+--")
+        else: 
+            print()
+            print()
 
 def player_wins(board, player):
     winning_conditions = [
