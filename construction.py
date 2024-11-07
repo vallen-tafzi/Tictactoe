@@ -4,4 +4,4 @@ def display_board(board):
         if i < 6:
             print("--+---+--")
 
-display_board(board)
+            

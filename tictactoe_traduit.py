@@ -1,3 +1,4 @@
+# Function to display the tictactoe board in a readable format
 def display_board(board):
     for i in range(0, 9, 3):
         print(board[i] + " | " + board[i + 1] + " | " + board[i + 2])
@@ -7,20 +8,23 @@ def display_board(board):
             print()
             print()
 
+# Function to check if a player has won by comparing positions against winning conditions
 def player_wins(board, player):
     winning_conditions = [
-        [0, 1, 2], [3, 4, 5], [6, 7, 8],  # Rows
-        [0, 3, 6], [1, 4, 7], [2, 5, 8],  # Columns
-        [0, 4, 8], [2, 4, 6]              # Diagonals
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],  
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],  
+        [0, 4, 8], [2, 4, 6]              
     ]
     for condition in winning_conditions:
         if board[condition[0]] == board[condition[1]] == board[condition[2]] == player:
             return True
     return False
 
+# Function to check if there are any empty cells remaining on the board
 def empty_cell(board):
     return " " in board
 
+# Function to allow the player to make a move, with input validation for cell availability
 def player_move(board, player):
     move = int(input("Enter a cell number (0-8): "))
     if board[move] == " ":
@@ -29,6 +33,7 @@ def player_move(board, player):
         print("Cell already taken, try again.")
         player_move(board, player)
 
+# Function for AI to make a strategic move, checking for possible wins, blocks, and optimal positions
 def ai(board, sign):
     opponent = "O" if sign == "X" else "X"
     for i in range(9):
@@ -55,6 +60,7 @@ def ai(board, sign):
             return edge
     return False
 
+# Main function to run the game loop, managing player turns and checking for end conditions
 def game():
     board = [" " for _ in range(9)]
     print("Choose game mode:")

@@ -1,36 +1,3 @@
-def jeu():
-    plateau = [" " for _ in range(9)]
-    print("Choisissez le mode de jeu :")
-    print("1. Jouer contre un autre joueur")
-    print("2. Jouer contre l'IA")
-    choix = input("Entrez 1 ou 2 : ")
-    
-    joueur_actuel = "X"
-    
-    while case_vide(plateau) and not joueur_gagne(plateau, "X") and not joueur_gagne(plateau, "O"):
-        afficher_plateau(plateau)
-        if joueur_actuel == "X":
-            mouvement_joueur(plateau, joueur_actuel)
-            joueur_actuel = "O"
-        else:
-            if choix == "1":
-                mouvement_joueur(plateau, joueur_actuel)
-            elif choix == "2":
-                mouvement = ia(plateau, joueur_actuel)
-                if mouvement is not False:
-                    plateau[mouvement] = joueur_actuel
-            joueur_actuel = "X"
-    
-    afficher_plateau(plateau)
-    if joueur_gagne(plateau, "X"):
-        print("X gagne!")
-    elif joueur_gagne(plateau, "O"):
-        print("O gagne!")
-    else:
-        print("Match nul!")
-
-jeu()
-
 def afficher_plateau(plateau):
     for i in range(0, 9, 3):
         print(plateau[i] + " | " + plateau[i + 1] + " | " + plateau[i + 2])
@@ -84,3 +51,36 @@ def ia(plateau, signe):
         if plateau[bord] == " ":
             return bord
     return False
+
+def jeu():
+    plateau = [" " for _ in range(9)]
+    print("Choisissez le mode de jeu :")
+    print("1. Jouer contre un autre joueur")
+    print("2. Jouer contre l'IA")
+    choix = input("Entrez 1 ou 2 : ")
+    
+    joueur_actuel = "X"
+    
+    while case_vide(plateau) and not joueur_gagne(plateau, "X") and not joueur_gagne(plateau, "O"):
+        afficher_plateau(plateau)
+        if joueur_actuel == "X":
+            mouvement_joueur(plateau, joueur_actuel)
+            joueur_actuel = "O"
+        else:
+            if choix == "1":
+                mouvement_joueur(plateau, joueur_actuel)
+            elif choix == "2":
+                mouvement = ia(plateau, joueur_actuel)
+                if mouvement is not False:
+                    plateau[mouvement] = joueur_actuel
+            joueur_actuel = "X"
+    
+    afficher_plateau(plateau)
+    if joueur_gagne(plateau, "X"):
+        print("X gagne!")
+    elif joueur_gagne(plateau, "O"):
+        print("O gagne!")
+    else:
+        print("Match nul!")
+
+jeu()
